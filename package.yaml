@@ -1,0 +1,34 @@
+name: free-stream
+version: 0.0.1
+synopsis: A simple streaming library built on free monads
+maintainer: Alexander Thiemann <mail@athiemann.net>
+license: BSD3
+github: agrafix/free-stream
+category: Data
+extra-source-files:
+  - package.yaml
+  - stack.yaml
+  - README.md
+
+ghc-options: -Wall
+
+dependencies:
+  - base >= 4.7 && < 5
+
+library:
+  source-dirs: src
+  exposed-modules:
+    Data.Stream.Free
+  dependencies:
+    - free
+    - mtl
+
+tests:
+  spec:
+    cpp-options: -DTEST
+    main: Spec.hs
+    source-dirs:
+      - test
+    dependencies:
+      - hspec == 2.*
+      - free-stream
